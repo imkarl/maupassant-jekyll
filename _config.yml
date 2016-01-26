@@ -1,0 +1,48 @@
+# Site settings
+title: 博客标题
+subtitle: 博客副标题
+description: 博客描述
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://yourdomain.com" # 你的域名
+page_no_title: "No title" # 文章无标题时默认显示内容
+beian: # "备案号"
+email: email@yourdomain.com
+
+# Build settings
+markdown: kramdown
+gems: [jekyll-paginate]
+
+# Pageinate settings
+paginate: 10 # 分页大小
+paginate_path: ":num"
+
+# Search settings
+baidu_search: true
+google_search: # true
+
+# Menu settings
+menu:
+  - page: 首页
+    directory: .
+    icon: icon-home
+  - page: 归档
+    directory: archives/
+    icon: icon-archive
+  - page: 关于
+    directory: about/
+    icon: icon-about
+  - page: 历史
+    directory: history/
+    icon: icon-history
+  - page: 订阅
+    directory: feed.xml
+    icon: icon-rss
+
+# Link settings
+links: # 友情链接
+  - title: site-name1
+    url: http://www.example1.com/
+  - title: site-name2
+    url: http://www.example2.com/
+  - title: site-name3
+    url: http://www.example3.com/

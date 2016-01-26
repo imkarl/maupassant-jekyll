@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN" >
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+  
+  <link rel="stylesheet" type="text/css" href="{{ "/css/normalize.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" type="text/css" href="{{ "/css/pure-min.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" type="text/css" href="{{ "/css/grids-responsive-min.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" type="text/css" href="{{ "/css/style.css" | prepend: site.baseurl }}">
+</head>
+
+  <body>
+    <div class="body_container">
+      <div id="header">
+        <div class="site-name">
+          <h1 class="hidden">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+          <a id="logo" href="/.">{{ site.title }}</a>
+          <p class="description">{{ site.subtitle }}</p>
+        </div>
+        <div id="nav-menu">
+          {% for menu in site.menu %}
+            <a href="{{ site.baseurl }}/{{ menu.directory }}"><i class="{{ menu.icon }}"> {{ menu.page }}</i></a>
+          {% endfor %}
+        </div>
+      <script type="text/javascript">
+      var menus=document.getElementById('nav-menu');
+      var ishome = true;
+      for (var i=1;i<menus.childElementCount;i++) {
+        var path = location.href;
+        var current = path.startsWith(menus.children[i].href);
+        if (current) {
+          menus.children[i].className ='current';
+          ishome = false;
+          break;
+        }
+      }
+      if (ishome) {
+      	menus.children[0].className ='current';
+      }
+      </script>
+      </div>
+
+      <div id="layout" class="pure-g">
+        <div class="pure-u-1 pure-u-md-3-4">
+          <div class="content_container">
+            {{ content }}
+          </div>
+        </div>
+        
+        <div class="pure-u-1-4">
+          <div id="sidebar">
+            <div class="widget">
+              {% if site.baidu_search %}
+                <form action="//www.baidu.com/s?gpc=stf" method="get" accept-charset="utf-8" target="_blank" class="search-form">
+                  <input type="text" name="q1" maxlength="20" placeholder="Search" class="search-form-input">
+                  <input type="hidden" name="q6" value="{{ site.url }}">
+                </form>
+              {% endif %}
+              {% if site.google_search %}
+                <form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form">
+                <input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input">
+                <input type="hidden" name="sitesearch" value="{{ site.url }}">
+                </form>
+              {% endif %}
+            </div>
+            
+            <div class="widget">
+                <div class="widget-title">分类</div>
+                <ul class="category-list">
+                  {% for category in site.categories %}
+                    <li class="category-list-item">
+                      <a class="category-list-link" href="{{ site.baseurl }}/category/{{ category[0] }}">{{ category[0] }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+            </div>
+              
+            <div class="widget">
+                <div class="widget-title">标签</div>
+                <div class="tagcloud">
+                  {% for tag in site.tags %}
+                    <a href="{{ site.baseurl }}/tag/{{ tag[0] }}" style="font-size: 15px;">{{ tag[0] }}</a>
+                  {% endfor %}
+                </div>
+            </div>
+              
+            <div class="widget">
+                <div class="widget-title">相关推荐</div>
+                <ul class="post-list">
+                {% for post in site.related_posts %}
+                  <li class="post-list-item"><a class="post-list-link" href="{{ post.url | prepend: site.baseurl }}">{% if post.title %} {{ post.title }} {% else %} {{ site.page_no_title }} {% endif %}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+              
+            <div class="widget">
+              <div class="widget-title">友情链接</div>
+              {% for link in site.links %}
+                <a href="{{ site.baseurl }}/{{ menu.directory }}"><i class="{{ menu.icon }}"> {{ menu.page }}</i></a>
+                <ul></ul><a href="{{ link.url }}" title="{{ link.title }}" target="_blank">{{ link.title }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="footer">© 2016 
+        <a href="/." rel="nofollow">{{ site.title }}.</a> Theme by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Maupassant.</a>
+        {% if site.beian %}
+        <a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/"> {{ site.beian }}.</a>
+        {% endif %}
+      </div>
+      
+
+      <a id="rocket" href="#top" class="show"></a>
+      
+      <script src="/js/jquery.min.js" type="text/javascript"></script>
+      <script src="/js/totop.js" type="text/javascript"></script>
+      <script src="/js/fancybox.pack.js" type="text/javascript"></script>
+      <script src="/js/jquery.fancybox.js" type="text/javascript"></script>
+      <link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css">
+      
+    </div>
+
+    {% include plugin.html %}
+
+  </body>
+
+</html>

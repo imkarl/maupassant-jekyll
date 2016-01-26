@@ -1,0 +1,44 @@
+---
+layout: base
+---
+
+{% for post in paginator.posts %}
+<div class="post">
+
+  <h2 class="post-title">
+  	<a href="{{ post.url | prepend: site.baseurl }}">
+  	{% if post.title %}
+  		{{ post.title }}
+  	{% else %}
+  		{{ site.page_no_title }}
+  	{% endif %}
+  	</a>
+  </h2>
+  
+  <div class="post-meta">{{ post.date | date: "%Y年%m月%d日" }}</div>
+  
+  <div class="post-content">{{ post.excerpt }}</div>
+  
+  <p class="readmore"><a href="{{ post.url | prepend: site.baseurl }}">阅读更多</a></p>
+  
+</div>
+{% endfor %}
+
+  
+  <div class="page-navigator">
+  {% if paginator.previous_page %}
+  {% if paginator.page == 2 %}
+    <a href="/" class="previous">上一页</a>
+  {% else %}
+    <a href="/{{ paginator.previous_page }}" class="previous">上一页</a>
+  {% endif %}
+  {% else %}
+    <!-- <span class="previous">上一页</span> -->
+  {% endif %}
+  
+  {% if paginator.next_page %}
+    <a href="/{{ paginator.next_page }}" class="next">下一页</a>
+  {% else %}
+    <!-- <span class="next ">下一页</span> -->
+  {% endif %}
+  </div>
