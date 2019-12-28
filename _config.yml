@@ -3,17 +3,17 @@ title: 博客标题
 subtitle: 博客副标题
 description: 博客描述
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # 你的域名
+url: "http://yourdomain.com" # 你的网址
+domain: "yourdomain.com" # 你的域名
 page_no_title: "No title" # 文章无标题时默认显示内容
 beian: # "备案号"
 email: email@yourdomain.com
 
 # Build settings
 markdown: kramdown
-gems: [jekyll-paginate]
 
 # Pageinate settings
-paginate: 10 # 分页大小
+page_size: 10 # 分页大小
 paginate_path: ":num"
 
 # Search settings

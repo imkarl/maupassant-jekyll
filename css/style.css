@@ -15,7 +15,7 @@ body {
 
 .body_container {
   padding: 0 60px;
-  max-width: 1150px;
+  max-width: 1250px;
   margin: 0 auto; }
 
 .content_container {
@@ -196,7 +196,9 @@ a:focus {
     .post .post-content h3 {
       margin: 1.4em 0 1.1em; }
     .post .post-content pre code {
-      padding: 0 2em; }
+      padding: 0 1em;
+      font-size: 14px;
+      line-height: 1.4; }
     .post .post-content p {
       margin: 0 0 1.234em; }
       .post .post-content p code {
@@ -349,7 +351,7 @@ blockquote, .stressed {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 2.5em 0;
-  padding: 0 0 0 50px;
+  padding: 0 40px 0 40px;
   color: #555;
   border-left: none; }
 
@@ -362,14 +364,28 @@ blockquote:before, .stressed-quote:before {
   color: #444;
   font-weight: bold;
   line-height: 30px;
-  margin-left: -50px;
+  margin-left: -40px;
   position: absolute; }
+
+blockquote:after {
+  content: "\201D";
+  display: block;
+  font-family: times;
+  font-style: normal;
+  font-size: 48px;
+  color: #444;
+  font-weight: bold;
+  line-height: 30px;
+  margin-top: -40px;
+  margin-right: -40px;
+  position: relative;
+  float:right; }
 
 strong, b, em {
   font-weight: bold; }
 
 pre {
-  margin: 2em 0; }
+  margin: 1em 0; }
 
 .hidden1 {
   display: none; }

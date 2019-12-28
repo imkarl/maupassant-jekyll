@@ -7,7 +7,7 @@
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
   
-  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <title>{% if page.title %}{{ site.title }} | {{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -18,6 +18,10 @@
   <link rel="stylesheet" type="text/css" href="{{ "/css/pure-min.css" | prepend: site.baseurl }}">
   <link rel="stylesheet" type="text/css" href="{{ "/css/grids-responsive-min.css" | prepend: site.baseurl }}">
   <link rel="stylesheet" type="text/css" href="{{ "/css/style.css" | prepend: site.baseurl }}">
+
+  <link rel="stylesheet" href="/js/styles/darcula.css">
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </head>
 
   <body>
@@ -64,13 +68,13 @@
               {% if site.baidu_search %}
                 <form action="//www.baidu.com/s?gpc=stf" method="get" accept-charset="utf-8" target="_blank" class="search-form">
                   <input type="text" name="q1" maxlength="20" placeholder="Search" class="search-form-input">
-                  <input type="hidden" name="q6" value="{{ site.url }}">
+                  <input type="hidden" name="q6" value="{{ site.domain }}">
                 </form>
               {% endif %}
               {% if site.google_search %}
                 <form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form">
                 <input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input">
-                <input type="hidden" name="sitesearch" value="{{ site.url }}">
+                <input type="hidden" name="sitesearch" value="{{ site.domain }}">
                 </form>
               {% endif %}
             </div>
@@ -80,7 +84,7 @@
                 <ul class="category-list">
                   {% for category in site.categories %}
                     <li class="category-list-item">
-                      <a class="category-list-link" href="{{ site.baseurl }}/category/{{ category[0] }}">{{ category[0] }}</a>
+                      <a class="category-list-link" href="{{ site.baseurl }}/category/?key={{ category[0] }}">{{ category[0] }}</a>
                     </li>
                   {% endfor %}
                 </ul>
@@ -90,7 +94,7 @@
                 <div class="widget-title">标签</div>
                 <div class="tagcloud">
                   {% for tag in site.tags %}
-                    <a href="{{ site.baseurl }}/tag/{{ tag[0] }}" style="font-size: 15px;">{{ tag[0] }}</a>
+                    <a href="{{ site.baseurl }}/tag/?key={{ tag[0] }}" style="font-size: 15px;">{{ tag[0] }}</a>
                   {% endfor %}
                 </div>
             </div>
